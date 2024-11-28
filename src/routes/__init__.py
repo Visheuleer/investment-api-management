@@ -1,1 +1,2 @@
 from routes.owner_routes import owner_router
+from routes.investment_routes import investment_router
