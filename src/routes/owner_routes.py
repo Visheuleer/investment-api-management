@@ -1,11 +1,10 @@
 from fastapi import APIRouter, HTTPException, status
 from schemas import OwnerSchema
-from repositories import OwnerRepository
+from repositories import owner_repository as repository
 from services import OwnerServices
 
 
 owner_router = APIRouter(prefix='/owner', tags=['Owner'])
-repository = OwnerRepository()
 
 @owner_router.get('/{document}', status_code=status.HTTP_200_OK)
 def get_owner(document: str):
@@ -16,7 +15,7 @@ def get_owner(document: str):
     return owner
 
 
-@owner_router.post('/owner', status_code=status.HTTP_201_CREATED)
+@owner_router.post('/', status_code=status.HTTP_201_CREATED)
 def create_owner(owner: OwnerSchema):
     if repository.find_owner_by_document(owner.document):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,
