@@ -1,4 +1,5 @@
 from sqlalchemy import Column, CHAR, String
+from sqlalchemy.orm import relationship
 from models import Base
 import uuid
 
@@ -9,3 +10,5 @@ class OwnerModel(Base):
     id = Column(CHAR(36), primary_key=True, default=lambda: str(uuid.uuid4()), index=True)
     fullname = Column(String(255), nullable=False, index=True)
     document = Column(String(11), nullable=False, unique=True, index=True)
+
+    investment = relationship("InvestmentModel", back_populates="owner", uselist=False)
