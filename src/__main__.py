@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import owner_router
+from routes import owner_router, investment_router
 from models import Base
 from db import db_connection
 
@@ -8,6 +8,7 @@ from db import db_connection
 app = FastAPI()
 
 app.include_router(owner_router)
+app.include_router(investment_router)
 
 
 if __name__ == "__main__":
