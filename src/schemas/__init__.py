@@ -1,1 +1,2 @@
 from schemas.owner_schema import OwnerSchema
+from schemas.investment_schema import InvestmentSchema
