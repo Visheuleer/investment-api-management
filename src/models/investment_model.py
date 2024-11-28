@@ -1,6 +1,7 @@
-from sqlalchemy import Column, CHAR, String, Float, ForeignKey
+from sqlalchemy import Column, CHAR, String, Float, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from models import Base
+import datetime
 import uuid
 
 
@@ -11,5 +12,6 @@ class InvestmentModel(Base):
     owner_id = Column(CHAR(36), ForeignKey("owners.id"), nullable=False, index=True)
     name = Column(String(255), nullable=False, index=True)
     amount_invested = Column(Float, nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.datetime.now(datetime.UTC))
 
     owner = relationship("OwnerModel", back_populates="investment")
