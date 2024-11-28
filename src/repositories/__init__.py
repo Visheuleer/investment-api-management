@@ -1,1 +1,2 @@
-from repositories.owner_repository import OwnerRepository
+from repositories.owner_repository import owner_repository
+from repositories.investment_repository import investment_repository
